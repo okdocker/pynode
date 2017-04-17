@@ -18,7 +18,7 @@ WORKDIR /app
 ### DEPENDENCIES 
 RUN echo "Install base Debian dependencies..." \
  && apt-get -y update \
- && apt-get -y install apt-transport-https lsb-release vim git curl libpq5 gnupg2 \
+ && apt-get -y install apt-transport-https lsb-release vim git curl sudo libpq5 gnupg2 \
  && pip install --upgrade pip wheel setuptools
 
 RUN echo "Install NodeJS and YARN..." \
@@ -27,5 +27,5 @@ RUN echo "Install NodeJS and YARN..." \
  && curl -sL https://deb.nodesource.com/setup_6.x | bash - \
  && apt-get install -y nodejs yarn
 
-PUSH rdorgueil/py3.6-node6:latest
+PUSH {{ .DockerImage }}
 
