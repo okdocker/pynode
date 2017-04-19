@@ -11,6 +11,7 @@ WORKDIR /app
 
 RUN echo "Install base Debian dependencies..." \
  && apt-get -y update \
+ && apt-get -y upgrade \
  && apt-get -y install apt-transport-https lsb-release vim git curl sudo \
  && pip install --upgrade pip wheel setuptools
 
