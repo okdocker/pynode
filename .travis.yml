@@ -8,7 +8,7 @@ env:
     - COMMIT=${TRAVIS_COMMIT::8}
     - export REPO=rdorgueil/pynode
 
-after_success:
+script:
   - curl -O -L https://github.com/grammarly/rocker/releases/download/1.3.1/rocker-1.3.1-linux_amd64.tar.gz
   - tar xvfz rocker-1.3.1-linux_amd64.tar.gz
   - ./rocker build --auth $DOCKER_USER:$DOCKER_PASS --push -var TravisBuildNumber=$TRAVIS_BUILD_NUMBER -var Commit=$COMMIT -var DockerImage=$REPO:3.6-6.x -var NodeVersion=6
