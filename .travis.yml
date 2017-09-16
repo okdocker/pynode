@@ -9,9 +9,7 @@ env:
     - secure: "A3hGQ0Z916rRISbNrJ7pr3/T8tXZnOkdFV5D/k0+Q4hxfTHIepJkz1PbCXxnu/ZfdQsYoShbrzodothXJiBNh1eNhL47A6jLb87Oiml6IOmL7kp8uCGrb455YXhWgorrVQ2YNOERgkesNnuFEdawSDeLsOcCCu/lx9B5BEF0LKVmRSwywc145UcMqmhvudbA8dcaJIh7NZhGx68LcqssTkH0LUnTIXKwPn8aVBzKc7ckHwvr+AzJSwwt9Br/St0BKhcdIiFcIkrhxs6XNCM8DqrASDYnuQUyuEOeY3iabhAMnTQrAhW7GgX4vkcX3lp+EPzFkcUVCtXag58ApwV9fYW0UOqMrzT2brB73cxQcUkU+i1wbxa1qnpXcml9dzi7XacH5y1HZ/jAOK0j1RqMA/bT1ilrnNCeh/HSjjfR5+T7IvsjYYKYx/lzaIBbN2kmnXEFwRamaOA87AzdMHOqgOVfeIr/UNIHjOo3nzVAKplXEsJ1rz2LocT+JjWGjPHUdttoWmdsOxougW4X321E2iwG6WFqxfLjtddXQRH5XN+Zjy1DGBQ5JjJRU5LdMywLqTqwWlHhTHCl8A4MZr4xX1xaiSIwWvU1HD3tk9MyVwgtECdVOJfEiUU5OrSERmrGe/Kp7/MUqnFJqyFNRlSH5N+9OPGdbF5EHSMF245VVBQ="
     - COMMIT=${TRAVIS_COMMIT::8}
     - export REPO=rdorgueil/pynode
-
-matrix:
-  env:
+  matrix:
     - NODE_VERSION=6
     - NODE_VERSION=8
 
