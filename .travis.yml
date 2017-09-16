@@ -1,5 +1,7 @@
 sudo: required
 
+language: c
+
 env:
   global:
     - secure: "tikkEdzV2V6CPAmoRDsM44aEngMYKozaag0gtK12kvDPOPS5UuR0Lc6ZOaKzYI0XMHSo2tmTuAoNDYzElw962OQyc2VgJEJ5/Wup/2LE6L0d6QM4UddRaNGY4zKZ+2jQ/nS5IT1dII0/yVrwJFoUm7Jgzq0C6fQM1gGdJ6B86cCmEXmJsyX8PLgGkQdyFgRIHrEJXXqyHqEYz9n9/sBLM7L22xe50XSc9MO46eA4H5xzCy1d6ONROe3elbj7UpqPs8ilTVliDQrfn5J7CoSiJeGHosaqTzBkPAcolhsOqG1lDK7zEyY/XIv6mVnfso4Xwh37HRmrpz1oMTVjpttgsHf0wX074V1nEp9IrqAqdtDpQSYt7A7mj9oOTrPzweZG7+ISod+IVvBU4Qfv6WDJPEpBNvXjkf5tAa2QJCl3CtlC0M9q7xFobdmaSPCvCged8Y/CLIL4m8dmJ3e50q4pXa58c0ZUwzGVM844S22SrJc8LgQuIUor+gklmwfOpnh8Dnq9cSoEsP5rYQFY7WWT/ii/uHzmHCm1H4lfIoEvSKNLKGvSeonWZtDhEsYTaHJt9r6VdUjRahFhywFcBLWCuEC7udLK5Dd5mESO9C2Vq+prUI9VZ2sOvDwO8bjmodzeDPpZwlKTHEGLljPddahCOqoLZD2kNgPts94qaLL57ws="
@@ -8,9 +10,10 @@ env:
     - COMMIT=${TRAVIS_COMMIT::8}
     - export REPO=rdorgueil/pynode
 
-env:
-  - NODE_VERSION=6
-  - NODE_VERSION=8
+matrix:
+  env:
+    - NODE_VERSION=6
+    - NODE_VERSION=8
 
 install:
   - curl -O -L https://github.com/grammarly/rocker/releases/download/1.3.1/rocker-1.3.1-linux_amd64.tar.gz
