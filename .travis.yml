@@ -22,7 +22,6 @@ install:
 script:
   - ./rocker build --auth $DOCKER_USER:$DOCKER_PASS --push -var TravisBuildNumber=$TRAVIS_BUILD_NUMBER -var Commit=$COMMIT -var DockerImage=$REPO:3.6-$NODE_VERSION.x -var NodeVersion=$NODE_VERSION
   - ./rocker build --auth $DOCKER_USER:$DOCKER_PASS --push -var TravisBuildNumber=$TRAVIS_BUILD_NUMBER -var Commit=$COMMIT -var DockerImage=$REPO:$ALIAS -var NodeVersion=$NODE_VERSION
-
   - ./rocker build --auth $QUAY_USER:$QUAY_PASS --push -var TravisBuildNumber=$TRAVIS_BUILD_NUMBER -var Commit=$COMMIT -var DockerImage=quay.io/$REPO:3.6-$NODE_VERSION.x -var NodeVersion=$NODE_VERSION
   - ./rocker build --auth $QUAY_USER:$QUAY_PASS --push -var TravisBuildNumber=$TRAVIS_BUILD_NUMBER -var Commit=$COMMIT -var DockerImage=quay.io/$REPO:$ALIAS -var NodeVersion=$NODE_VERSION
 
