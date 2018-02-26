@@ -11,15 +11,17 @@ MOUNT /var/lib/apt
 ENV PYTHONUNBUFFERED=1 \
     VIRTUAL_ENV=/usr/local \
     PIP_INSTALL_OPTIONS="--src /usr/local/src"
+
 RUN echo 'alias l="ls -lsah"' > ~/.bashrc \
- && mkdir -p /app/ /app/requirements/
+ && mkdir -p /app/
+
 WORKDIR /app
 
 ### DEPENDENCIES 
 RUN echo "Install base Debian dependencies..." \
  && apt-get -y update \
  && apt-get -y install apt-transport-https lsb-release vim git curl sudo libpq5 gnupg2 \
- && pip install --upgrade pip wheel setuptools
+ && pip install --upgrade pip setuptools wheel virtualenv
 
 RUN echo "Install NodeJS and YARN..." \
  && curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
