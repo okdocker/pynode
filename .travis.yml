@@ -13,7 +13,8 @@ env:
     - export REPO=okdocker/pynode
   matrix:
     - NODE_VERSION=8 ALIAS=lts
-    - NODE_VERSION=9 ALIAS=latest
+    - NODE_VERSION=9 ALIAS=previous
+    - NODE_VERSION=10 ALIAS=latest
 
 install:
   - curl -O -L https://github.com/grammarly/rocker/releases/download/1.3.1/rocker-1.3.1-linux_amd64.tar.gz
