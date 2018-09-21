@@ -12,17 +12,20 @@ env:
     - COMMIT=${TRAVIS_COMMIT::8}
     - export REPO=okdocker/pynode
   matrix:
-    - NODE_VERSION=8 ALIAS=lts
-    - NODE_VERSION=9 ALIAS=previous
-    - NODE_VERSION=10 ALIAS=latest
+    - PYTHON_VERSION=3.6 NODE_VERSION=8 NODE_ALIAS=lts
+    - PYTHON_VERSION=3.6 NODE_VERSION=9 NODE_ALIAS=previous
+    - PYTHON_VERSION=3.6 NODE_VERSION=10 NODE_ALIAS=latest
+    - PYTHON_VERSION=3.7 NODE_VERSION=8 NODE_ALIAS=lts
+    - PYTHON_VERSION=3.7 NODE_VERSION=9 NODE_ALIAS=previous
+    - PYTHON_VERSION=3.7 NODE_VERSION=10 NODE_ALIAS=latest
 
 install:
   - curl -O -L https://github.com/grammarly/rocker/releases/download/1.3.1/rocker-1.3.1-linux_amd64.tar.gz
   - tar xvfz rocker-1.3.1-linux_amd64.tar.gz
 
 script:
-  - ./rocker build --auth $DOCKER_USER:$DOCKER_PASS --push -var TravisBuildNumber=$TRAVIS_BUILD_NUMBER -var Commit=$COMMIT -var DockerImage=$REPO:3.6-$NODE_VERSION.x -var NodeVersion=$NODE_VERSION
-  - ./rocker build --auth $DOCKER_USER:$DOCKER_PASS --push -var TravisBuildNumber=$TRAVIS_BUILD_NUMBER -var Commit=$COMMIT -var DockerImage=$REPO:$ALIAS -var NodeVersion=$NODE_VERSION
-  - ./rocker build --auth $QUAY_USER:$QUAY_PASS --push -var TravisBuildNumber=$TRAVIS_BUILD_NUMBER -var Commit=$COMMIT -var DockerImage=quay.io/$REPO:3.6-$NODE_VERSION.x -var NodeVersion=$NODE_VERSION
-  - ./rocker build --auth $QUAY_USER:$QUAY_PASS --push -var TravisBuildNumber=$TRAVIS_BUILD_NUMBER -var Commit=$COMMIT -var DockerImage=quay.io/$REPO:$ALIAS -var NodeVersion=$NODE_VERSION
+  - ./rocker build --auth $DOCKER_USER:$DOCKER_PASS --push -var TravisBuildNumber=$TRAVIS_BUILD_NUMBER -var Commit=$COMMIT -var DockerImage=$REPO:$PYTHON_VERSION-$NODE_VERSION.x -var PythonVersion=$PYTHON_VERSION -var NodeVersion=$NODE_VERSION
+  - ./rocker build --auth $DOCKER_USER:$DOCKER_PASS --push -var TravisBuildNumber=$TRAVIS_BUILD_NUMBER -var Commit=$COMMIT -var DockerImage=$REPO:$PYTHON_VERSION-$NODE_ALIAS -var PythonVersion=$PYTHON_VERSION -var NodeVersion=$NODE_VERSION
+  - ./rocker build --auth $QUAY_USER:$QUAY_PASS --push -var TravisBuildNumber=$TRAVIS_BUILD_NUMBER -var Commit=$COMMIT -var DockerImage=quay.io/$REPO:$PYTHON_VERSION-$NODE_VERSION.x -var PythonVersion=$PYTHON_VERSION -var NodeVersion=$NODE_VERSION
+  - ./rocker build --auth $QUAY_USER:$QUAY_PASS --push -var TravisBuildNumber=$TRAVIS_BUILD_NUMBER -var Commit=$COMMIT -var DockerImage=quay.io/$REPO:$PYTHON_VERSION-$NODE_ALIAS -var PythonVersion=$PYTHON_VERSION -var NodeVersion=$NODE_VERSION
 

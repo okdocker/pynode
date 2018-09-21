@@ -11,7 +11,7 @@ DOCKER_IMAGE ?= okdocker/pynode:$(VERSION)
 all: build-lts build-current
 
 build:
-	$(ROCKER) build -f Rockerfile --attach $(ROCKER_OPTIONS) -var DockerImage=$(DOCKER_IMAGE) -var NodeVersion=$(NODE_VERSION) .
+	$(ROCKER) build -f Rockerfile --attach $(ROCKER_OPTIONS) -var DockerImage=$(DOCKER_IMAGE) -var PythonVersion=$(PYTHON_VERSION) -var NodeVersion=$(NODE_VERSION) .
 
 build-current:
 	NODE_VERSION=9 $(MAKE) build
