@@ -24,6 +24,10 @@ env:
     - PYTHON_VERSION=3.7 NODE_VERSION=8 NODE_ALIAS=previous IMAGE_ALIAS=previous
     - PYTHON_VERSION=3.7 NODE_VERSION=10 NODE_ALIAS=lts IMAGE_ALIAS=lts
     - PYTHON_VERSION=3.7 NODE_VERSION=12 NODE_ALIAS=latest IMAGE_ALIAS=latest
+    # Python 3.8
+    - PYTHON_VERSION=3.8 NODE_VERSION=8 NODE_ALIAS=previous IMAGE_ALIAS=previous
+    - PYTHON_VERSION=3.8 NODE_VERSION=10 NODE_ALIAS=lts IMAGE_ALIAS=lts
+    - PYTHON_VERSION=3.8 NODE_VERSION=12 NODE_ALIAS=latest IMAGE_ALIAS=latest
 
 install:
   - curl -O -L https://github.com/grammarly/rocker/releases/download/1.3.1/rocker-1.3.1-linux_amd64.tar.gz
